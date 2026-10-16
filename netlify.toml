@@ -1,0 +1,21 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Public client config. The publishable key is designed to ship in browser code
+  # (it ends up in the built JS either way). To manage these in the Netlify UI
+  # instead, delete the two lines below.
+  VITE_SUPABASE_URL = "https://bnxplhyjgmclqkzlesrw.supabase.co"
+  VITE_SUPABASE_ANON_KEY = "sb_publishable_yDA9I3C2CWXcwNJeVBftxQ_3EfndjHM"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
